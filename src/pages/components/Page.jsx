@@ -1,19 +1,19 @@
 import { Typography, Box } from "@mui/material";
 
-const TapPanel = (props) => {
-    const {children, value, index, ...others} = props;
+const Page = (props) => {
+    const {children, pageNumber, index, ...others} = props;
 
     return(
         <div
             role="tabpanel"
-            hidden={value !== index}
+            hidden={pageNumber !== index}
             id={`tabpanel-${index}`}
             aria-labelledby= {`sidebar-tab-${index}`}
             {...others}
         >
-            {value === index && (
-                <Box sx={{p: 3}}>
-                    <Typography>{children}</Typography>
+            {pageNumber === index && (
+                <Box sx={{height: '100vh', overflow: 'hidden'}}>
+                    {children}
                 </Box>
             )}
         </div>
@@ -21,4 +21,4 @@ const TapPanel = (props) => {
 
 };
 
-export default TapPanel;
+export default Page;

@@ -5,12 +5,9 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import { Typography } from '@mui/material';
-import { theme } from '../ui/theme';
+import { theme } from './Theme/theme';
 
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-
-import Sidebar from '../Sidebar';
-import ContentContainer from '../ContentContainer';
 
 
 //* NOTE Create RTL Cache
@@ -24,9 +21,7 @@ const MainLayout = ({children}) => {
         <CacheProvider value={cacheRTL}>
             <ThemeProvider theme={theme}>
                 <HelmetProvider>
-                    <Helmet>
-                        <title>وبسایت شخصی من</title>
-                    </Helmet>
+    
                         {/* Grid System */}
                         <Grid2 container sx={{height: '100vh'}}>
                             {children}
