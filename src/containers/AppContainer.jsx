@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Typography, Box } from '@mui/material'; 
-
+import { Typography, useMediaQuery } from '@mui/material'; 
+import { useTheme } from '@mui/material/styles';
 import MainLayout from '../layouts/MainLayout.jsx';
 import { Sidebar } from '../components/sidebar';
 import PagesContainer from './PagesContainer.jsx';
@@ -16,9 +16,18 @@ import {Home, About} from '../pages/index.js';
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
   const [drawerOpen, setDrawerOpen]= useState(false);
+
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  useEffect(() => {
+     if(isMdUp){
+          setDrawerOpen(false);
+     }
+  },[isMdUp]);
   
   const handlePageNumber = (event, newValue) => {
-   setPageNumber(newValue);
+     setPageNumber(newValue);
   };
 
   return (

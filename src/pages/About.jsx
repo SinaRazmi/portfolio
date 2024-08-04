@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 import { Helmet } from "react-helmet-async";
-import { Box, Typography, Card, CardContent, Divider, Chip, Avatar } from "@mui/material";
+import { Box, Typography, Card, CardContent, Divider, Chip, Avatar, Tooltip } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import CountUp from "react-countup/build/CountUp";
+import CountUp from "react-countup";
 
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
@@ -12,6 +12,7 @@ import DevInfo from "./components/DevInfo";
 import avatar from '../assets/avatar.jpg';
 import Skill from "./components/Skill";
 import {devSkills} from "./components/Skills";
+import { devWorkInfo } from "../constants/details";
 
 const About = () => {
 
@@ -84,13 +85,43 @@ const About = () => {
                                 </Typography>
                             } sx={{ p: 3}}></Chip>
                         </Divider>
-                            <DevInfo>
-                                نام و نام خانوادگی: سینا رزمی
-                            </DevInfo>
-                            <DevInfo>سن: 30</DevInfo>
-                            <DevInfo>شهر: تهران</DevInfo>
-                            <DevInfo>شماره موبایل: 09125751313</DevInfo>
-                            <DevInfo>sinarazmi94@gmail.com :آدرس ایمیل</DevInfo>
+                            <Grid2 container>
+                                <Grid2 xs={4} sm={4} md={3} lg={3} sx={{
+                                   display: {
+                                    "xs" : "none",
+                                    "sm": "block",
+                                    "md": "block"
+                                   },
+                                   mt: 2,
+                                }}>
+                                    {
+                                        devWorkInfo.map((item, index) => (
+                                            <Box key={index} component='div' sx={{width: 1, mb: 1}}>
+                                            <Tooltip title={item.tooltilpTitle} placement="right" arrow>
+                                            <Chip icon={item.icon} label={
+                                                    <Typography variant="body1" color='whitesmoke'>
+                                                        
+                                                        <CountUp start={0} end={item.total} duration={2} />
+
+                                                    </Typography>
+                                                } sx={{p: 2, backgroundColor: item.color , width: 1}} />
+                                            </Tooltip>
+                                            </Box>
+                                        ))
+                                    }
+                                </Grid2>
+
+                                <Grid2 xs={12} sm={8} md={9} lg={9}>
+                                    <DevInfo>نام و نام خانوادگی: سینا رزمی</DevInfo>
+                                    <DevInfo>سن: 30</DevInfo>
+                                    <DevInfo>شهر: تهران</DevInfo>
+                                    <DevInfo>شماره موبایل: 09125751313</DevInfo>
+                                    <DevInfo>sinarazmi94@gmail.com :آدرس ایمیل</DevInfo>
+                                </Grid2>
+
+                            </Grid2>
+
+                            
                             
 
                     </Grid2>
