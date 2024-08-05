@@ -61,7 +61,7 @@ const Resume = ({helmetTitle}) => {
                             <Slide direction="up" in={loading} style={{
                                 transitionDelay: loading ? `${index + 3}99ms` :"0ms" }}> 
 
-<TimelineItem key={index}>
+            <TimelineItem key={index}>
                                 <TimelineSeparator>
                                     <TimelineDot color="warning" variant="outlined">
                                         <HomeRepairServiceRounded color="warning" />

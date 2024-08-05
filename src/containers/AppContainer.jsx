@@ -11,7 +11,7 @@ import MainContext from '../context/index.js';
 import DrawerActionButton from '../components/drawer/DrawerActionButton.jsx';
 import SwipeableViews from 'react-swipeable-views';
 
-import {Home, About, Resume} from '../pages/index.js';
+import {Home, About, Resume, Courses} from '../pages/index.js';
 
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -50,7 +50,7 @@ function App() {
               <Resume helmetTitle= "وبسایت شخصی | رزومه من" />
          </Page>
          <Page pageNumber={pageNumber} index={3}>
-              <Typography variant='h5' sx={{textAlign: 'center'}}>نمونه کارها</Typography>
+              <Courses helmetTitle=" وبسایت شخصی | دوره های من" />
          </Page>
          <Page pageNumber={pageNumber} index={4}>
               <Typography variant='h5' sx={{textAlign: 'center'}}>نظرات</Typography>
