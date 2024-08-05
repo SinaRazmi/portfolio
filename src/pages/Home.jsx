@@ -11,7 +11,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 
 import bg01 from '../assets/bg01.jpg';
 
-const Home =  ()  => {
+const Home =  ({helmetTitle})  => {
     const nameEl = useRef(null);
     const infoEL = useRef(null);
 
@@ -157,15 +157,13 @@ const Home =  ()  => {
     );
     
   };
-
-
+   
     return(
-      
         <Box sx={{backgroundImage: `url(${bg01})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center',
         alignItems: 'center'
         }}>
 
-            <Helmet><title>وبسایت شخصی | صفحه اصلی</title></Helmet>
+            <Helmet><title>{helmetTitle}</title></Helmet>
             <Typography ref={nameEl} variant='h3' color= 'tomato' ></Typography>
             <Typography ref={infoEL} variant='h4' color= 'black' sx={{textDecoration: 'underline', textDecorationColor: 'tomato'}} ></Typography>
         </Box>  

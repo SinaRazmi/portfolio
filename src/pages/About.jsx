@@ -14,7 +14,7 @@ import Skill from "./components/Skill";
 import {devSkills} from "./components/Skills";
 import { devWorkInfo } from "../constants/details";
 
-const About = () => {
+const About = ({helmeTitle}) => {
 
     const [javascript, setJavascript] = useState(0);
     const [html, setHtml] = useState(0);
@@ -73,7 +73,7 @@ const About = () => {
             overflowY: "scroll",
 
         }}>
-            <Helmet><title>وبسایت شخصی | درباره من</title></Helmet>
+            <Helmet><title>{helmeTitle}</title></Helmet>
             <CardContent>
                 <Grid2 container sx={{mx: 3}}>
                     <Grid2 xs={12} sm={12} md={8} lg={8} xl={8}>

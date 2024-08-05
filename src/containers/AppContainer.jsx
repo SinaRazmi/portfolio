@@ -11,7 +11,7 @@ import MainContext from '../context/index.js';
 import DrawerActionButton from '../components/drawer/DrawerActionButton.jsx';
 import SwipeableViews from 'react-swipeable-views';
 
-import {Home, About} from '../pages/index.js';
+import {Home, About, Resume} from '../pages/index.js';
 
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -40,14 +40,14 @@ function App() {
         <PagesContainer>
         <SwipeableViews index={pageNumber} onChangeIndex={handlePageNumber} >
         <Page pageNumber={pageNumber} index={0}>
-             <Home />
+             <Home helmetTitle= "وبسایت شخصی | صفحه اصلی" />
          </Page>
          <Page pageNumber={pageNumber} index={1}>
             
-             <About />
+             <About helmetTitle= "وبسایت شخصی | درباره من" />
          </Page>
          <Page pageNumber={pageNumber} index={2}>
-              <Typography variant='h5' sx={{textAlign: 'center'}}>رزومه من</Typography>
+              <Resume helmetTitle= "وبسایت شخصی | رزومه من" />
          </Page>
          <Page pageNumber={pageNumber} index={3}>
               <Typography variant='h5' sx={{textAlign: 'center'}}>نمونه کارها</Typography>
