@@ -16,9 +16,15 @@ import {Home, About, Resume, Courses, Comments} from '../pages/index.js';
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
   const [drawerOpen, setDrawerOpen]= useState(false);
+  const [mode, setMode] = useState();
 
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const prefersDarkMode = useMediaQuery(`(prefers-color-scheme: dark)`);
+
+  useEffect(() => {
+     setMode(prefersDarkMode ? "dark" : "light");
+  }, [])
 
   useEffect(() => {
      if(isMdUp){
@@ -30,9 +36,13 @@ function App() {
      setPageNumber(newValue);
   };
 
+  const handleThemeChange = () =>{
+     setMode(prevMode => prevMode === "light" ? "dark" : "light");
+  };
+
   return (
-   <MainContext.Provider value={{pageNumber, handlePageNumber, drawerOpen, setDrawerOpen}}>
-      <MainLayout>
+   <MainContext.Provider value={{pageNumber, handlePageNumber, drawerOpen, setDrawerOpen, handleThemeChange}}>
+      <MainLayout mode={mode}>
         <SidebarContainer>
             <Sidebar pageNumber={pageNumber} handleChange={handlePageNumber} />
         </SidebarContainer>

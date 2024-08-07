@@ -3,10 +3,12 @@ import { Avatar, Typography, Box, IconButton } from '@mui/material';
 
 import {GitHub, Telegram, Instagram, WhatsApp} from "@mui/icons-material";
 import avatar from '../../assets/avatar.jpg';
+import ThemeActionButton from '../ThemeActionButton';
 
 const SidebarHeader = () => {
     return(
         <>
+             <ThemeActionButton />
              <Avatar
                 src={avatar}
                 variant='rounded'

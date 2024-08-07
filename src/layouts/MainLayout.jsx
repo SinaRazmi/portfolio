@@ -5,7 +5,7 @@ import { HelmetProvider, Helmet } from 'react-helmet-async';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import { Typography } from '@mui/material';
-import { theme } from './Theme/theme';
+import { lightTheme, darkTheme } from './Theme/theme';
 
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
@@ -16,7 +16,10 @@ const cacheRTL = createCache({
     stylisPlugins: [prefixer, rtlPlugin],
   });
 
-const MainLayout = ({children}) => {
+const MainLayout = ({children, mode}) => {
+
+    const theme = mode === "dark" ? darkTheme : lightTheme;
+
     return(
         <CacheProvider value={cacheRTL}>
             <ThemeProvider theme={theme}>
