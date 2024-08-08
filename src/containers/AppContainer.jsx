@@ -11,7 +11,8 @@ import MainContext from '../context/index.js';
 import DrawerActionButton from '../components/drawer/DrawerActionButton.jsx';
 import SwipeableViews from 'react-swipeable-views';
 
-import {Home, About, Resume, Courses, Comments} from '../pages/index.js';
+import {Home, About, Resume, Courses, Comments, Contact} from '../pages/index.js';
+
 
 function App() {
   const [pageNumber, setPageNumber] = useState(0);
@@ -66,11 +67,9 @@ function App() {
               <Comments helmetTitle=" وبسایت شخصی | نظرات دانشجویان" />
          </Page>
          <Page pageNumber={pageNumber} index={5}>
-              <Typography variant='h5' sx={{textAlign: 'center'}}>ارتباط با من</Typography>
+              <Contact helmetTitle=" وبسایت شخصی | ارتباط با من" />
          </Page>
         </SwipeableViews>
-
-           
         </PagesContainer>
     </MainLayout>
    </MainContext.Provider>

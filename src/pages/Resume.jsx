@@ -32,14 +32,14 @@ const Resume = ({helmetTitle}) => {
             <CardContent>
                 <Slide direction="down" in={loading} style={{transitionDelay: loading ? '200ms':'0ms'}}>
 
-                <Divider textAlign="center" sx={{"&::before, &::after":{borderColor: "secondary.main"}}}>
-                <Chip color="secondary" icon={<SettingsEthernetRounded />} label={
-                    <Typography variant="body1" color='black' sx={{textAlign: 'center'}}>
-                          مهارت های من
-                                        
-                    </Typography>
-                } sx={{ p: 3}}></Chip>
-                </Divider> 
+                    <Divider textAlign="center" sx={{"&::before, &::after":{borderColor: "secondary.main"}}}>
+                    <Chip color="secondary" icon={<SettingsEthernetRounded />} label={
+                        <Typography variant="body1" color='black' sx={{textAlign: 'center'}}>
+                            مهارت های من
+                                            
+                        </Typography>
+                    } sx={{ p: 3}}></Chip>
+                    </Divider> 
 
                 </Slide>
                 
