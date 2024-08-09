@@ -4,7 +4,7 @@ import {Tabs, Tab, Typography, Box, Avatar, Divider, Icon, iconButtonClasses} fr
 import { grey } from '@mui/material/colors';
 import { useTheme } from '@mui/material/styles';
 import MainConext from '../../context/index';
-import { tabsData } from '../data/tabsData.sidebar';
+import { tabsData } from '../../constants/tabsdata';
 
 
 const SidebarTabs = () => {
@@ -48,15 +48,10 @@ const SidebarTabs = () => {
                     {...tab}
                     />
                 ))
-            }
-                
-
-
-                {/* <Tab label='درباره من' icon={<FaceRounded />} iconPosition='start' sx={{backgroundColor: grey[800], mx: '1rem', mt: '.5rem'}} /> */}
-                
+            };
 
             </Tabs>    
-    )
+    );
 };
 
 export default SidebarTabs;

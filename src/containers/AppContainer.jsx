@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 
-import { Typography, useMediaQuery } from '@mui/material'; 
+import { useMediaQuery } from '@mui/material'; 
 import { useTheme } from '@mui/material/styles';
-import MainLayout from '../layouts/MainLayout.jsx';
 import { Sidebar } from '../components/sidebar';
-import PagesContainer from './PagesContainer.jsx';
-import Page from '../pages/components/Page.jsx';
-import SidebarContainer from './SidebarContainer.jsx';
-import MainContext from '../context/index.js';
-import DrawerActionButton from '../components/drawer/DrawerActionButton.jsx';
 import SwipeableViews from 'react-swipeable-views';
 
+import SidebarContainer from './SidebarContainer.jsx';
+import MainLayout from '../layouts/MainLayout.jsx';
+import PagesContainer from './PagesContainer.jsx';
+import Page from '../pages/components/Page.jsx';
+import MainContext from '../context/index.js';
+import DrawerActionButton from '../components/drawer/DrawerActionButton.jsx';
 import {Home, About, Resume, Courses, Comments, Contact} from '../pages/index.js';
+
 
 
 function App() {

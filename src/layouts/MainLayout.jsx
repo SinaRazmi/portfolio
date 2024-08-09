@@ -4,11 +4,9 @@ import { CacheProvider } from '@emotion/react';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
-import { Typography } from '@mui/material';
 import { lightTheme, darkTheme } from './Theme/theme';
 
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
-
 
 //* NOTE Create RTL Cache
 const cacheRTL = createCache({

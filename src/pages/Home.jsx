@@ -52,9 +52,6 @@ const Home =  ({helmetTitle})  => {
 
     // this should be run only once per application lifetime
   useEffect(() => {
-
-    
-
     initParticlesEngine(async (engine) => {
       // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
       // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
@@ -78,9 +75,7 @@ const Home =  ({helmetTitle})  => {
   const options = useMemo(
     () => ({
       background: {
-        color: {
-          value: "#0d47a1",
-        },
+        "image": `url(${bg01})`
       },
       fpsLimit: 120,
       interactivity: {
@@ -106,10 +101,10 @@ const Home =  ({helmetTitle})  => {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: "#6907ed",
         },
         links: {
-          color: "#ffffff",
+          color: "#661bcc",
           distance: 150,
           enable: true,
           opacity: 0.5,
@@ -149,11 +144,24 @@ const Home =  ({helmetTitle})  => {
 
   if (init) {
     return (
-      <Particles
+      
+      <>
+      {/* <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}
         options={options}
-      />
+      /> */}
+        <Box sx={{ backgroundPosition: 'center',backgroundImage: `url(${bg01})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center',
+        alignItems: 'center', zIndex: 999,
+        }}>
+          <Helmet><title>{helmetTitle}</title></Helmet>
+          <Typography ref={nameEl} variant='h3' color= 'tomato' ></Typography>
+            <Typography ref={infoEL} variant='h4' color= 'black' sx={{textDecoration: 'underline', textDecorationColor: 'tomato'}} ></Typography>
+
+        </Box>
+            
+      </>
+      
     );
     
   };
