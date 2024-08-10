@@ -19,7 +19,7 @@ const DevExpTimeline = ({loading}) => {
                                         <HomeRepairServiceRounded color="warning" />
                                     </TimelineDot>
 
-                                    {index != 2? <TimelineConnector /> : null}
+                                    {index !== 2? <TimelineConnector /> : null}
                                 
                                 </TimelineSeparator>
                                 <TimelineContent>

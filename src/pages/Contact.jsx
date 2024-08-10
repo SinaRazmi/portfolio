@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
 
-import {useFormik} from "formik";
-import ReCAPTCHA from "react-google-recaptcha";
-import { useTheme } from "@mui/material/styles";
-import { Divider, Chip, Typography, Card, CardContent, Slide, TextField, InputAdornment, CardActions, Button } from "@mui/material";
+import {  Typography, Card, CardContent, Slide } from "@mui/material";
 import Grid from '@mui/material/Grid';
-
-import { Face6Rounded, SubjectRounded, EmailRounded, AccountCircle, Message } from "@mui/icons-material";
+import { AccountCircle } from "@mui/icons-material";
 import { Helmet } from "react-helmet-async";
 
 import worldMap from "../assets/map.svg";
-import { contactValidationSchema } from "./validations/contactValidation";
+import CustomDivider from "../components/common/CustomDivider";
+import ContactForm from "./ContactForm";
 
 const Contact = ({ helmetTitle }) => {
     const [loading, setLoading] = useState(false);
-
-    const theme = useTheme();
 
     useEffect(() => {
         setLoading(true);
@@ -25,24 +20,7 @@ const Contact = ({ helmetTitle }) => {
         };
     }, []);
 
-    const contactInputNames = {
-        fullname:"",
-        email:"",
-        subject:"",
-        message:"",
-        recaptcha:"",
-    };
-
-    const formik = useFormik({
-        initialValues: contactInputNames,
-        onSubmit: values => {
-            console.log("Form Values:", values);
-        },
-        validationSchema: contactValidationSchema,
-    });
-
-
-
+    
     return (
         <Card
             sx={{
@@ -57,30 +35,13 @@ const Contact = ({ helmetTitle }) => {
                 <title>{helmetTitle}</title>
             </Helmet>
             <CardContent>
-                <Divider
-                    textAlign="center"
-                    sx={{
-                        mt: 2,
-                        "&::before, &::after": {
-                            borderColor: "warning.main",
-                        },
-                    }}
-                >
-                    <Chip
-                        icon={<AccountCircle />}
-                        color="warning"
-                        label={
-                            <Typography
-                                variant="body1"
-                                color="black"
-                                sx={{ textAlign: "center" }}
-                            >
-                                ارتباط با من
-                            </Typography>
-                        }
-                        sx={{ p: 3 }}
-                    />
-                </Divider>
+               <CustomDivider 
+                bColor="warning.main"
+                cColor="warning"
+                icon={<AccountCircle />}
+                align="center"
+                text= "ارتباط با من"
+               />
 
                 <Grid container sx={{ mt: 5 }}>
                     <Slide
@@ -97,142 +58,7 @@ const Contact = ({ helmetTitle }) => {
                                     alignItems: "center",
                                 }}
                             >
-                                <form autoComplete="on" onSubmit={formik.handleSubmit}>
-                                    <CardContent>
-                                        <Grid container>
-                                            <Grid
-                                                xs={12}
-                                                sx={{ direction: "ltr" }}
-                                            >
-                                                <Grid container spacing={3} sx={{px: 5, py:7}}>
-                                                    <Grid xs={12} md={6}>
-                                                        <TextField
-                                                            fullWidth
-                                                            size="small"
-                                                            color="warning"
-                                                            label="نام و نام خانوادگی"
-                                                            name="fullname"
-                                                            variant="outlined"
-                                                            helperText={
-                                                                formik.touched.fullname ? formik.errors.fullname : null
-                                                            }
-                                                            error = {Boolean(formik.touched.fullname && formik.errors.fullname)}
-                                                            value={formik.values?.fullname}
-                                                            onChange={formik.handleChange}
-                                                            InputProps={{
-                                                                endAdornment: (
-                                                                    <InputAdornment postion="end">
-                                                                        <Face6Rounded />
-                                                                    </InputAdornment>
-                                                                ),
-                                                            }}
-                                                            sx={{my: 1}}
-                                                        />
-                                                    </Grid>
-                                                    <Grid xs={12} md={6}>
-                                                        <TextField
-                                                            fullWidth
-                                                            size="small"
-                                                            color="warning"
-                                                            label="آدرس ایمیل"
-                                                            name="email"
-                                                            variant="outlined"
-                                                            helperText={
-                                                                formik.touched.email ? formik.errors.email : null
-                                                            }
-                                                            error = {Boolean(formik.touched.email && formik.errors.email)}
-                                                            value={formik.values?.email}
-                                                            onChange={formik.handleChange}
-                                                            InputProps={{
-                                                                endAdornment: (
-                                                                    <InputAdornment postion="end">
-                                                                        <EmailRounded />
-                                                                    </InputAdornment>
-                                                                ),
-                                                            }}
-                                                            sx={{my: 1}}
-                                                        />
-                                                    </Grid>
-                                                    <Grid xs={12} md={12}>
-                                                        <TextField
-                                                            fullWidth
-                                                            size="small"
-                                                            color="warning"
-                                                            label="عنوان"
-                                                            name="subject"
-                                                            variant="outlined"
-                                                            helperText={
-                                                                formik.touched.subject ? formik.errors.subject : null
-                                                            }
-                                                            error = {Boolean(formik.touched.fullname && formik.errors.subject)}
-                                                            value={formik.values?.subject}
-                                                            onChange={formik.handleChange}
-                                                            InputProps={{
-                                                                endAdornment: (
-                                                                    <InputAdornment postion="end">
-                                                                        <SubjectRounded />
-                                                                    </InputAdornment>
-                                                                ),
-                                                            }}
-                                                            sx={{my: 1}}
-                                                        />
-                                                    </Grid>
-                                                    <Grid xs={12} md={12} >
-                                                        <TextField
-                                                            fullWidth
-                                                            multiline
-                                                            rows={6}
-                                                            size="small"
-                                                            color="warning"
-                                                            label="متن پیام"
-                                                            name="message"
-                                                            variant="outlined"
-                                                            helperText={
-                                                                formik.touched.message ? formik.errors.message : null
-                                                            }
-                                                            error = {Boolean(formik.touched.message && formik.errors.message)}
-                                                            value={formik.values?.message}
-                                                            onChange={formik.handleChange}
-                                                            sx={{my: 1}}
-                                                        />
-                                                    </Grid>
-                                                </Grid>
-                                            </Grid>
-                                        </Grid>
-                                    </CardContent>
-                                    <CardActions
-                                        sx={{
-                                            alignItems: "end",
-                                            flexDirection: "column",
-                                        }}
-                                    >
-                                        <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-                                            theme={theme.palette.mode}
-                                            hl="fa"
-                                            onChange={value => {
-                                                formik.setFieldValue("recaptcha", value);
-                                            }}
-                                         />
-                                            {
-                                                formik.errors.recaptcha && formik.touched.recaptcha && 
-                                                (
-                                                    <Typography variant="caption" color="error">
-                                                        {formik.errors.recaptcha}
-                                                    </Typography>
-                                                )
-                                            }
-
-                                        <Button
-                                            type="submit"
-                                            color="success"
-                                            variant="contained"
-                                            sx={{ mt: 2 }}
-                                            fullWidth
-                                        >
-                                            ارسال کن
-                                        </Button>
-                                    </CardActions>
-                                </form>
+                                <ContactForm />
                             </Card>
                         </Grid>
                     </Slide>
