@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { Typography, Slide } from "@mui/material";
 import { Timeline, TimelineItem, TimelineDot, TimelineContent, TimelineConnector, TimelineSeparator } from "@mui/lab";
 import { SchoolRounded } from "@mui/icons-material"
